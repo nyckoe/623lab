@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>623lab — Practice the hardest conversations, safely</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ HERO / LOGO ============ -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+    </div>
+    <div class="hero-inner">
+      <h1 class="logo">623lab</h1>
+      <nav class="hero-nav">
+        <a href="#what-we-do">Academic</a>
+        <span class="dot">·</span>
+        <a href="#lab-practice">Research</a>
+        <span class="dot">·</span>
+        <a href="#contact">Contact Us</a>
+      </nav>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </div>
+  </header>
+
+  <!-- ============ WHAT WE DO ============ -->
+  <section id="what-we-do" class="section what-we-do">
+    <div class="section-inner">
+      <p class="eyebrow reveal">What we do</p>
+      <h2 class="section-title reveal">
+        We turn lived experience into safe, realistic practice —
+        so caregivers learn the hardest conversations
+        <em>before</em> they happen for real.
+      </h2>
+
+      <div class="value-grid">
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">🧬</div>
+          <h3>Data-Grounded Simulation</h3>
+          <p>Simulated patients are built from real, consented patient
+             experience — not textbook stereotypes — so practice reflects
+             how symptoms actually show up, session after session.</p>
+        </article>
+
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">🛡️</div>
+          <h3>Trauma-Informed by Design</h3>
+          <p>Every scenario and rubric is built on trauma-informed
+             principles — safety, trust, choice, collaboration, and
+             cultural humility — so training prevents harm instead of
+             just documenting it.</p>
+        </article>
+
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">🌏</div>
+          <h3>Bilingual, Culturally Grounded</h3>
+          <p>Built first for Chinese-speaking caregiver communities in
+             NYC, with real code-switching support — not translation
+             bolted on after the fact.</p>
+        </article>
+
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">📈</div>
+          <h3>Practice → Competency</h3>
+          <p>Caregivers rehearse, receive rubric-scored debriefs grounded
+             in real outcomes, and build a portable record of
+             competency over time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAB PRACTICE ============ -->
+  <section id="lab-practice" class="section lab-practice">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Lab practice</p>
+      <h2 class="section-title reveal">See a simulated session in action</h2>
+      <p class="section-sub reveal">
+        A simulated patient presents a symptom. Our practice coach
+        searches the <strong>ASWB Guidebook</strong> for the grounded
+        theory and models a proper, trauma-informed response.
+      </p>
+
+      <div class="chat-stage reveal">
+
+        <div class="chat-column patient-column">
+          <div class="avatar-card">
+            <div class="avatar avatar-patient" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="72" height="72">
+                <circle cx="50" cy="50" r="50" fill="#dfe7e6"/>
+                <path d="M20 88c2-20 12-30 30-30s28 10 30 30" fill="#274c56"/>
+                <circle cx="50" cy="42" r="20" fill="#e8c39e"/>
+                <path d="M30 34c4-14 36-14 40 0 2 6 0 10-2 8-4-8-32-8-36 0-2 2-4-2-2-8z" fill="#8a8f94"/>
+                <circle cx="42" cy="44" r="2.2" fill="#33393b"/>
+                <circle cx="58" cy="44" r="2.2" fill="#33393b"/>
+                <path d="M43 53c3 3 11 3 14 0" stroke="#7a5238" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="avatar-name">Simulated Patient<br><span>Robert · 74</span></div>
+          </div>
+        </div>
+
+        <div class="chat-column log-column">
+          <div id="chat-log" class="chat-log" aria-live="polite">
+            <p class="chat-placeholder">Pick a prompt below to start the session ↓</p>
+          </div>
+        </div>
+
+        <div class="chat-column coach-column">
+          <div class="avatar-card">
+            <div class="avatar avatar-coach" id="coach-avatar" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="72" height="72">
+                <circle cx="50" cy="50" r="50" fill="#123b3d"/>
+                <circle cx="50" cy="42" r="20" fill="#f0c9a0"/>
+                <path d="M30 36c0-14 40-14 40 0v4c-6-6-34-6-40 0z" fill="#4a3728"/>
+                <circle cx="42" cy="44" r="2.2" fill="#2a2a2a"/>
+                <circle cx="58" cy="44" r="2.2" fill="#2a2a2a"/>
+                <path d="M42 53c3 3 13 3 16 0" stroke="#7a5238" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <rect x="18" y="70" width="64" height="24" rx="6" fill="#1a5c5e"/>
+              </svg>
+              <span class="book-badge" id="book-badge">📘</span>
+            </div>
+            <div class="avatar-name">Practice Coach<br><span>ASWB-Grounded</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-row reveal" id="prompt-row">
+        <button class="prompt-btn" data-key="die">"I want to die"</button>
+        <button class="prompt-btn" data-key="hopeless">"I feel hopeless"</button>
+        <button class="prompt-btn" data-key="concentrate">"I can't concentrate on anything"</button>
+        <button class="prompt-btn" data-key="pressure">"I feel a lot of pressure"</button>
+        <button class="prompt-btn prompt-reset" id="reset-btn" type="button">↺ Reset session</button>
+      </div>
+
+      <p class="disclaimer reveal">
+        ⚠️ This is a simulated educational demo illustrating the 623lab
+        training approach. It is not a real clinical assessment. If you
+        or someone you know is in crisis, call or text
+        <strong>988</strong> (Suicide &amp; Crisis Lifeline).
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <footer id="contact" class="footer">
+    <div class="section-inner footer-inner">
+      <p class="logo-small">623lab</p>
+      <p>Data-grounded training for caregivers who show up for the hardest moments.</p>
+      <p class="footer-links">
+        <a href="#what-we-do">Academic</a>
+        <span class="dot">·</span>
+        <a href="#lab-practice">Research</a>
+        <span class="dot">·</span>
+        <a href="mailto:hello@623lab.org">hello@623lab.org</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
