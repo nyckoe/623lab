@@ -1,6 +1,14 @@
 (function () {
   "use strict";
 
+  /* SMIL <animateMotion> ignores the CSS prefers-reduced-motion override,
+     so pause it manually for the research flow diagram. */
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("svg").forEach(function (svg) {
+      if (typeof svg.pauseAnimations === "function") svg.pauseAnimations();
+    });
+  }
+
   /* Scroll-reveal for the core-value section */
   var revealTargets = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window) {
