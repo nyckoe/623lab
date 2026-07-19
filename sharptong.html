@@ -522,9 +522,22 @@
   }
   footer .fmark{ font-family:var(--font-display); font-style:italic; font-size:1.4rem; color:var(--gold-soft); }
   footer p{ color:var(--mauve-dim); font-size:.85rem; margin:.5rem 0 0; }
+  .lab-back{
+    position:absolute; top:1.25rem; right:clamp(1rem,3vw,2.5rem); z-index:30;
+    display:inline-flex; align-items:center; padding:.7rem 1rem;
+    border:1px solid var(--gold-dim); border-radius:999px;
+    color:var(--gold-soft); background:rgba(17,6,13,.64);
+    backdrop-filter:blur(10px); font-size:.72rem; font-weight:700;
+    letter-spacing:.09em; text-transform:uppercase;
+    transition:transform .25s ease,background .25s ease,color .25s ease;
+  }
+  .lab-back:hover,.lab-back:focus-visible{ transform:translateY(-3px); background:var(--venom); color:var(--ink); }
+  @media(max-width:520px){.lab-back{top:.8rem;right:.8rem;padding:.58rem .75rem;font-size:.62rem}}
 </style>
 </head>
 <body>
+
+<a class="lab-back" href="index.html" aria-label="Back to 623lab home">← 623lab</a>
 
 <canvas id="mist" aria-hidden="true"></canvas>
 

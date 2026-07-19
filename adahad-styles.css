@@ -19,6 +19,7 @@ h1,h2,h3,h4{font-family:Georgia,"Iowan Old Style",serif;margin:0}
 .site-nav>div{display:flex;gap:30px;font-size:12px;text-transform:uppercase;letter-spacing:1.4px}
 .site-nav>div a{position:relative}
 .site-nav>div a:after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:currentColor;transition:.3s}
+.site-nav .lab-back{border:1px solid currentColor;border-radius:999px;padding:9px 13px;line-height:1;transition:background .25s,color .25s,transform .25s}.site-nav .lab-back:after{display:none}.site-nav .lab-back:hover,.site-nav .lab-back:focus-visible{background:var(--deep-blue);color:white;transform:translateY(-2px)}
 .site-nav>div a:hover:after{width:100%}
 
 /* Hero */
