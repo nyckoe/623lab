@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>623lab — Building software that meets people where they are</title>
+<meta name="description" content="623lab is a small studio building ADaHaD, CKare, SharpTong, and BuzzerBT — practical software for the moments that matter." />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+
+  <!-- ============ HERO / LOGO + PROJECT NAV ============ -->
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+    </div>
+    <div class="hero-inner">
+      <h1 class="logo">623lab</h1>
+      <div class="logo-decoration" aria-hidden="true">
+        <span class="deco-line"></span>
+        <span class="deco-orbit"><i></i><i></i><i></i></span>
+        <span class="deco-line"></span>
+      </div>
+      <p class="hero-manifesto">Human questions. Practical software.</p>
+      <nav class="project-nav" aria-label="Our projects">
+        <a class="project-link project-adahad" href="adahad.html"><small>01</small><span>ADaHaD</span><i>↗</i></a>
+        <a class="project-link project-ckare" href="ckare.html"><small>02</small><span>CKare</span><i>↗</i></a>
+        <a class="project-link project-sharptong" href="sharptong.html"><small>03</small><span>SharpTong</span><i>↗</i></a>
+        <a class="project-link project-buzzerbt" href="buzzerbt.html"><small>04</small><span>BuzzerBT</span><i>↗</i></a>
+      </nav>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </div>
+  </header>
+
+  <!-- ============ PROJECTS / SLIDING TABS ============ -->
+  <section id="projects" class="section tabs-section">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Our projects</p>
+      <h2 class="section-title reveal">
+        Four ideas, one belief: software should meet people
+        <em>where they actually are.</em>
+      </h2>
+
+      <div class="tab-bar reveal" role="tablist" aria-label="Project tabs">
+        <button class="tab-btn active" data-tab="adahad" role="tab" aria-selected="true">ADaHaD</button>
+        <button class="tab-btn" data-tab="ckare" role="tab" aria-selected="false">CKare</button>
+        <button class="tab-btn" data-tab="sharptong" role="tab" aria-selected="false">SharpTong</button>
+        <button class="tab-btn" data-tab="buzzerbt" role="tab" aria-selected="false">BuzzerBT</button>
+      </div>
+
+      <div class="tab-stage reveal">
+
+        <!-- ADaHaD -->
+        <article class="tab-panel active" data-panel="adahad" style="--accent:#e0693f; --accent-soft:#f6c9a0;">
+          <div class="panel-copy">
+            <span class="panel-eyebrow">ADaHaD</span>
+            <h3>Understand more.<br>Judge less.</h3>
+            <p>ADaHaD turns what caregivers observe into calm, evidence-grounded
+               next steps — never a diagnosis, never a label. Every suggestion
+               is cited to a clinical source, so support stays trustworthy
+               instead of guesswork.</p>
+            <a class="panel-link" href="adahad.html">Explore ADaHaD <span>→</span></a>
+          </div>
+          <div class="panel-phone">
+            <div class="phone-mock">
+              <div class="phone-topbar"><span></span><span></span><span></span></div>
+              <div class="phone-screen">
+                <p class="app-label">adaHad.</p>
+                <div class="msg-bubble step-1">“Zoned out again during homework…”</div>
+                <div class="result-card step-2">
+                  <span class="result-tag">✓ Cited · NICE NG87</span>
+                  <b>Try a 2-minute reset, then one small task.</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CKare -->
+        <article class="tab-panel" data-panel="ckare" style="--accent:#f17862; --accent-soft:#a9dfc5;">
+          <div class="panel-copy">
+            <span class="panel-eyebrow">CKare</span>
+            <h3>From learning to living.<br>From searching to care.</h3>
+            <p>CKare connects the people training for care work with the
+               people trying to find it — one path to learn, practice, and
+               get hired; another to verify coverage, choose a caregiver,
+               and track every visit.</p>
+            <a class="panel-link" href="ckare.html">Explore CKare <span>→</span></a>
+          </div>
+          <div class="panel-phone">
+            <div class="phone-mock">
+              <div class="phone-topbar"><span></span><span></span><span></span></div>
+              <div class="phone-screen">
+                <p class="app-label">CKare</p>
+                <div class="msg-bubble step-1">Checking your coverage…</div>
+                <div class="result-card step-2">
+                  <span class="result-tag">✓ Active · Silver Plus PPO</span>
+                  <b>Avery Morgan — ★4.9, book 3:30 today</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- SharpTong -->
+        <article class="tab-panel" data-panel="sharptong" style="--accent:#8CFA5B; --accent-soft:#6B1F3A;">
+          <div class="panel-copy">
+            <span class="panel-eyebrow">SharpTong</span>
+            <h3>Ask the elegant witch.<br>Get the truth, unsugared.</h3>
+            <p>SharpTong is blunt, not cruel — she attacks bad logic and bad
+               behavior, never your worth. You choose how spicy the truth
+               gets: Silk, Thorn, or Venom.</p>
+            <a class="panel-link" href="sharptong.html">Explore SharpTong <span>→</span></a>
+          </div>
+          <div class="panel-phone">
+            <div class="phone-mock phone-dark">
+              <div class="phone-topbar"><span></span><span></span><span></span></div>
+              <div class="phone-screen">
+                <p class="app-label">SharpTongue</p>
+                <div class="msg-bubble step-1">He hasn't replied in 3 days…</div>
+                <div class="result-card step-2">
+                  <span class="result-tag">🧙 The Witch</span>
+                  <b>Stop translating silence into love.</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- BuzzerBT -->
+        <article class="tab-panel" data-panel="buzzerbt" style="--accent:#f16f24; --accent-soft:#d7ef68;">
+          <div class="panel-copy">
+            <span class="panel-eyebrow">BuzzerBT</span>
+            <h3>One empty gym.<br>Two sides winning.</h3>
+            <p>BuzzerBT turns unused school gyms into bookable neighborhood
+               courts. Schools recover the real cost of opening and fund
+               upkeep; players get reliable indoor access without the phone
+               calls or paperwork.</p>
+            <a class="panel-link" href="buzzerbt.html">Explore BuzzerBT <span>→</span></a>
+          </div>
+          <div class="panel-phone">
+            <div class="phone-mock">
+              <div class="phone-topbar"><span></span><span></span><span></span></div>
+              <div class="phone-screen">
+                <p class="app-label">BuzzerBT</p>
+                <div class="msg-bubble step-1">Bedford Gym · Tue 6–8pm</div>
+                <div class="result-card step-2">
+                  <span class="result-tag">✓ Booked · $20/player</span>
+                  <b>Upkeep and operations funded.</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="door door-left" aria-hidden="true"></div>
+        <div class="door door-right" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT OUR TEAM ============ -->
+  <section id="team" class="section team-section">
+    <div class="section-inner">
+      <p class="eyebrow reveal center">Who we are</p>
+      <h2 class="section-title reveal center">About our team</h2>
+
+      <div class="team-grid">
+        <article class="team-card reveal">
+          <div class="team-avatar" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="96" height="96">
+              <circle cx="50" cy="50" r="50" fill="#e4f0ef"/>
+              <path d="M50 14c-16 0-24 10-24 26 0 4 1 8 2 11-3 2-5 6-5 11 0 13 12 22 27 22s27-9 27-22c0-5-2-9-5-11 1-3 2-7 2-11 0-16-8-26-24-26z" fill="#3b2a22"/>
+              <circle cx="50" cy="52" r="21" fill="#e8c39e"/>
+              <path d="M29 46c1-11 8-19 21-19s20 8 21 19c0-9-6-17-14-19 2 3 2 6 0 8-4-6-13-8-19-4-3 2-5 6-4 10-3-1-5-1-5 5z" fill="#3b2a22"/>
+              <circle cx="43" cy="53" r="2.2" fill="#33393b"/>
+              <circle cx="59" cy="53" r="2.2" fill="#33393b"/>
+              <path d="M44 62c3 3 11 3 14 0" stroke="#8a5a34" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M20 92c3-16 14-24 30-24s27 8 30 24" fill="#16545a"/>
+            </svg>
+            <span class="team-badge" title="Finance background">📊</span>
+          </div>
+          <h3>Lisa C. Lu</h3>
+          <p>Columbia University alumna · Financial background</p>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="team-avatar" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="96" height="96">
+              <circle cx="50" cy="50" r="50" fill="#e4f0ef"/>
+              <circle cx="50" cy="52" r="21" fill="#e8c39e"/>
+              <path d="M29 42c4-12 34-12 42 0 2 4 2 8 0 8-2-8-8-11-21-11s-19 3-21 11c-2 0-2-4 0-8z" fill="#2a2a2a"/>
+              <circle cx="43" cy="53" r="2.2" fill="#33393b"/>
+              <circle cx="59" cy="53" r="2.2" fill="#33393b"/>
+              <path d="M44 62c3 3 11 3 14 0" stroke="#8a5a34" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <rect x="34" y="45" width="14" height="9" rx="2" fill="none" stroke="#2a2a2a" stroke-width="2"/>
+              <rect x="54" y="45" width="14" height="9" rx="2" fill="none" stroke="#2a2a2a" stroke-width="2"/>
+              <line x1="48" y1="49" x2="54" y2="49" stroke="#2a2a2a" stroke-width="2"/>
+              <path d="M20 92c3-16 14-24 30-24s27 8 30 24" fill="#123b3d"/>
+            </svg>
+            <span class="team-badge" title="Sociology background">🧭</span>
+          </div>
+          <h3>Chris Bai</h3>
+          <p>Columbia University alumnus · Sociology background</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <footer id="contact" class="footer">
+    <div class="section-inner footer-inner">
+      <p class="logo-small">623lab</p>
+      <p>Practical software for the moments that matter.</p>
+      <p class="footer-links">
+        <a href="adahad.html">ADaHaD</a>
+        <span class="dot">·</span>
+        <a href="ckare.html">CKare</a>
+        <span class="dot">·</span>
+        <a href="sharptong.html">SharpTong</a>
+        <span class="dot">·</span>
+        <a href="buzzerbt.html">BuzzerBT</a>
+        <span class="dot">·</span>
+        <a href="mailto:hello@623lab.org">hello@623lab.org</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

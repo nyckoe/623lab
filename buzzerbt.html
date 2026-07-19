@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BuzzerBT turns unused school gyms into bookable neighborhood basketball courts, funding safe operations and court upkeep." />
+  <title>BuzzerBT — Keep the court in play</title>
+  <link rel="stylesheet" href="responsive.css" />
+  <style>
+    :root {
+      --ink: #121b18;
+      --court: #e8d9bd;
+      --paper: #f7f1e6;
+      --orange: #f16f24;
+      --lime: #d7ef68;
+      --white: #fffdf8;
+      --line: rgba(18, 27, 24, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      height: 78px;
+      padding: 0 clamp(22px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 10;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .logo { font-size: 25px; font-weight: 900; letter-spacing: -1.7px; }
+    .logo i { color: var(--orange); font-style: normal; }
+    nav span { font-size: 10px; text-transform: uppercase; letter-spacing: 1.8px; opacity: 0.7; }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 110px 6vw 50px;
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, transparent 49.88%, rgba(255,255,255,.12) 50%, transparent 50.12%),
+        linear-gradient(rgba(255,255,255,.075) 1px, transparent 1px),
+        var(--ink);
+      background-size: auto, 100% 86px, auto;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: min(68vw, 980px);
+      aspect-ratio: 2 / 1;
+      border: 1px solid rgba(255,255,255,.14);
+      border-bottom: 0;
+      border-radius: 50% 50% 0 0;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      width: min(1180px, 100%);
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2.4px;
+      color: var(--lime);
+    }
+    .eyebrow::before, .eyebrow::after { content: ""; width: 38px; height: 1px; background: currentColor; }
+    h1 {
+      margin: 0;
+      font-size: clamp(62px, 10.5vw, 158px);
+      line-height: 0.82;
+      letter-spacing: -0.085em;
+      text-transform: uppercase;
+    }
+    h1 em { color: var(--orange); font-style: normal; }
+    .hero-copy > p {
+      width: min(610px, 90%);
+      margin: 34px auto 0;
+      color: rgba(255,255,255,.72);
+      font-size: clamp(15px, 1.5vw, 19px);
+      line-height: 1.6;
+    }
+    .scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.7px;
+    }
+    .scroll i {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      font-style: normal;
+      animation: bob 1.8s ease-in-out infinite;
+    }
+
+    .basketball-wrap {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 51%;
+      width: clamp(125px, 16vw, 245px);
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 30px 24px rgba(0,0,0,.36));
+      animation: hover 4.2s ease-in-out infinite;
+      pointer-events: none;
+      opacity: .97;
+    }
+    .basketball {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: clamp(4px, .5vw, 7px) solid #171814;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 25%, #ffb065 0 4%, transparent 24%),
+        radial-gradient(circle at 68% 74%, #bd4115 0, transparent 63%),
+        var(--orange);
+      box-shadow: inset -22px -26px 35px rgba(76,25,4,.34), inset 15px 13px 24px rgba(255,211,145,.24);
+    }
+    .basketball::before, .basketball::after, .ball-h, .ball-v {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+    .ball-h { top: 50%; left: -6%; width: 112%; border-top: clamp(4px,.5vw,7px) solid #171814; transform: rotate(-9deg); }
+    .ball-v { top: -6%; left: 50%; height: 112%; border-left: clamp(4px,.5vw,7px) solid #171814; transform: rotate(7deg); }
+    .basketball::before, .basketball::after { width: 97%; height: 145%; top: -23%; border: clamp(4px,.5vw,7px) solid #171814; border-radius: 50%; }
+    .basketball::before { left: -67%; }
+    .basketball::after { right: -67%; }
+
+    .ticker {
+      background: var(--lime);
+      overflow: hidden;
+      border-bottom: 1px solid var(--ink);
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding: 15px 0;
+      font-weight: 900;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      animation: marquee 22s linear infinite;
+    }
+    .ticker-track i { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+    .value {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 720px;
+      border-bottom: 1px solid var(--line);
+    }
+    .value-copy {
+      padding: clamp(70px, 9vw, 135px) clamp(25px, 7vw, 110px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .section-label { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #7d6d57; }
+    .value h2 {
+      margin: 22px 0 28px;
+      max-width: 700px;
+      font-size: clamp(48px, 6vw, 92px);
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+    .value h2 em { color: var(--orange); font-style: normal; }
+    .value-copy > p { max-width: 570px; color: #5c594f; font-size: 17px; line-height: 1.7; }
+    .value-visual {
+      position: relative;
+      min-height: 600px;
+      background: var(--court);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border-left: 1px solid var(--line);
+    }
+    .court-lines { position: absolute; inset: 8%; border: 2px solid rgba(18,27,24,.4); }
+    .court-lines::before { content:""; position:absolute; width:45%; aspect-ratio:1; border:2px solid rgba(18,27,24,.4); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+    .court-lines::after { content:""; position:absolute; width:44%; height:48%; border:2px solid rgba(18,27,24,.4); border-top:0; left:50%; top:0; transform:translateX(-50%); }
+    .impact-card {
+      position: relative;
+      z-index: 2;
+      width: min(390px, 78%);
+      padding: 32px;
+      background: var(--ink);
+      color: var(--white);
+      box-shadow: 20px 20px 0 var(--orange);
+      transform: rotate(-2deg);
+    }
+    .impact-card small { text-transform: uppercase; letter-spacing: 1.7px; color: var(--lime); font-size: 9px; }
+    .impact-card b { display:block; margin: 16px 0 6px; font-size: clamp(50px,7vw,86px); letter-spacing: -.07em; }
+    .impact-card span { font-size: 13px; color: rgba(255,255,255,.68); }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; }
+    .side { min-height: 590px; padding: clamp(60px,8vw,110px); display:flex; flex-direction:column; justify-content:space-between; }
+    .side.school { background: var(--ink); color: var(--white); }
+    .side.player { background: var(--orange); }
+    .side header { display:flex; justify-content:space-between; align-items:flex-start; }
+    .side header span { width:36px; height:36px; display:grid; place-items:center; border:1px solid currentColor; border-radius:50%; font-size:10px; }
+    .side h3 { max-width: 600px; margin: 60px 0 24px; font-size: clamp(45px,5vw,76px); line-height:.96; letter-spacing:-.06em; }
+    .side p { max-width:500px; font-size:16px; line-height:1.65; opacity:.72; }
+    .side ul { list-style:none; padding:0; margin:50px 0 0; border-top:1px solid currentColor; }
+    .side li { display:flex; justify-content:space-between; padding:15px 0; border-bottom:1px solid currentColor; font-size:11px; text-transform:uppercase; letter-spacing:1px; opacity:.75; }
+    .side li::after { content:"✓"; }
+
+    .flow { padding: 110px clamp(24px, 7vw, 110px); background: var(--white); }
+    .flow-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:70px; }
+    .flow h2 { margin:10px 0 0; font-size:clamp(52px,7vw,100px); letter-spacing:-.07em; line-height:.9; }
+    .flow-head p { max-width:360px; color:#67645b; line-height:1.6; }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); }
+    .step { min-height:260px; padding:28px; border-right:1px solid var(--line); position:relative; transition:.3s; }
+    .step:last-child { border:0; }
+    .step:hover { background:var(--lime); transform:translateY(-8px); }
+    .step span { font-size:10px; color:var(--orange); font-weight:900; }
+    .step b { display:block; margin-top:85px; font-size:22px; line-height:1.1; }
+    .step p { font-size:12px; line-height:1.5; color:#68655d; }
+
+    footer { padding:30px clamp(22px,5vw,76px); background:var(--ink); color:white; display:flex; justify-content:space-between; align-items:center; }
+    footer small { opacity:.5; font-size:9px; }
+
+    @keyframes hover { 50% { transform: translate(-50%, calc(-50% - 16px)) rotate(5deg); } }
+    @keyframes bob { 50% { transform: translateY(5px); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    @media (max-width: 760px) {
+      nav { height:68px; }
+      .hero { min-height:860px; padding-inline:22px; }
+      h1 { font-size:clamp(58px,20vw,86px); }
+      .basketball-wrap { top:50%; width:150px; opacity:.82; }
+      .hero-copy > p { margin-top:190px; }
+      .value, .split { grid-template-columns:1fr; }
+      .value-copy { padding-block:80px; }
+      .value-visual { min-height:500px; border-left:0; border-top:1px solid var(--line); }
+      .side { min-height:560px; padding:65px 25px; }
+      .flow { padding:80px 22px; }
+      .flow-head { display:block; }
+      .steps { grid-template-columns:1fr 1fr; }
+      .step { border-bottom:1px solid var(--line); min-height:230px; }
+      .step:nth-child(2) { border-right:0; }
+      .step b { margin-top:65px; }
+      footer { align-items:flex-start; gap:20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="logo" href="#top">BUZZER<i>BT</i></a>
+    <span>Courts belong in play</span>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <span class="eyebrow">After school. Before the buzzer.</span>
+        <h1>Keep the<br />court <em>in play.</em></h1>
+        <p>Turn empty school gyms into neighborhood courts—giving players reliable indoor access while every booking helps fund safe operations and court upkeep.</p>
+        <a class="scroll" href="#value"><i>↓</i> See the shared win</a>
+      </div>
+      <div class="basketball-wrap" aria-hidden="true">
+        <div class="basketball"><span class="ball-h"></span><span class="ball-v"></span></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>More court time</span><i></i><span>Less wasted space</span><i></i><span>Maintenance funded</span><i></i><span>Neighborhoods moving</span><i></i><span>More court time</span><i></i><span>Less wasted space</span><i></i><span>Maintenance funded</span><i></i><span>Neighborhoods moving</span>
+      </div>
+    </div>
+
+    <section class="value" id="value">
+      <div class="value-copy">
+        <span class="section-label">The core value</span>
+        <h2>One empty gym.<br />Two sides <em>winning.</em></h2>
+        <p>Schools control the hours, recover the real cost of opening, and direct revenue toward the court. Players get the indoor space they already want—without the phone calls, paper forms, or guesswork.</p>
+      </div>
+      <div class="value-visual">
+        <div class="court-lines"></div>
+        <div class="impact-card">
+          <small>Illustrative two-hour booking</small>
+          <b>$200</b>
+          <span>10 players · $20 each · operating costs and maintenance reserve included</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="split">
+      <article class="side school">
+        <div>
+          <header><span>01</span><small class="section-label">For schools</small></header>
+          <h3>Open only what works.</h3>
+          <p>School activities remain first. Administrators publish approved hours, include required staffing, and see exactly where every dollar goes.</p>
+        </div>
+        <ul><li>School-controlled availability</li><li>Full operating cost recovery</li><li>Visible maintenance contribution</li></ul>
+      </article>
+      <article class="side player">
+        <div>
+          <header><span>02</span><small class="section-label">For players</small></header>
+          <h3>Find it. Split it. Play.</h3>
+          <p>Discover verified indoor courts, see the full price, invite your group, split the cost, and arrive with clear access instructions.</p>
+        </div>
+        <ul><li>Reliable indoor courts</li><li>Simple group payments</li><li>Clear rules and access</li></ul>
+      </article>
+    </section>
+
+    <section class="flow">
+      <div class="flow-head">
+        <div><span class="section-label">A managed marketplace</span><h2>From dark<br />to booked.</h2></div>
+        <p>Not an unlocked building. A district-approved flow with staffing, safety, and school priorities built into every slot.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><span>01</span><b>School shares a safe slot</b><p>Calendar, staffing, buffers, and price are approved first.</p></article>
+        <article class="step"><span>02</span><b>Players book together</b><p>The organizer verifies identity, accepts rules, and invites the group.</p></article>
+        <article class="step"><span>03</span><b>The game tips off</b><p>Authorized staff open, supervise, inspect, and close the gym.</p></article>
+        <article class="step"><span>04</span><b>The court earns back</b><p>Costs are covered and the approved maintenance share is recorded.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#top">BUZZER<i>BT</i></a>
+    <small>School use always comes first · Illustrative pricing only</small>
+  </footer>
+</body>
+</html>

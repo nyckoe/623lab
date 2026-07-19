@@ -1,0 +1,103 @@
+/* Shared responsive safety layer for the flat GitHub upload. */
+html {
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main,
+header,
+footer,
+section,
+article,
+nav,
+div {
+  min-width: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+.phone,
+.phone-mock,
+.device,
+.device-shell,
+.mobile-frame {
+  max-width: calc(100vw - 32px);
+}
+
+@media (max-width: 960px) {
+  .panel-inner,
+  .panel-body,
+  .tab-panel,
+  .phone-stage {
+    min-width: 0 !important;
+  }
+
+  .tab-bar,
+  .tabs,
+  .tab-list,
+  .project-nav {
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
+  }
+}
+
+@media (max-width: 520px) {
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  button {
+    overflow-wrap: anywhere;
+  }
+
+  .phone,
+  .phone-mock,
+  .device,
+  .device-shell,
+  .mobile-frame {
+    transform: none !important;
+  }
+
+  .team-grid,
+  .steps,
+  .split,
+  .value,
+  .pathways,
+  .panel-inner,
+  .panel-body {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
