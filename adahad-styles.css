@@ -92,7 +92,7 @@ h1,h2,h3,h4{font-family:Georgia,"Iowan Old Style",serif;margin:0}
 .tab-btn.active{opacity:1;border-bottom:3px solid var(--amber);background:rgba(255,255,255,.05);transform:translateY(-2px)}
 .tab-btn:hover{opacity:.85}
 
-.phone-stage{position:relative;display:flex;align-items:center;justify-content:center;flex:1;width:100%;min-height:0}
+.phone-stage{position:relative;display:flex;align-items:center;justify-content:center;flex:none;width:100%;min-height:680px}
 .orbit-ring{position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;animation:spin 22s linear infinite}
 .ring-a{width:min(58vh,520px);height:min(58vh,520px)}
 .ring-b{width:min(70vh,630px);height:min(70vh,630px);border-style:dashed;animation-direction:reverse;animation-duration:30s}
@@ -228,11 +228,12 @@ footer small{margin-left:auto;color:#d9c3ac;font-size:9px;font-family:sans-serif
   .card-b{right:0;bottom:6%}
   .values{padding:70px 20px}
   .value-grid{grid-template-columns:1fr;gap:20px}
-  .demo{padding:60px 20px;min-height:0}
+  .demo{padding:60px 20px 72px;min-height:0;height:auto;overflow:visible}
   .tab-list{flex-wrap:wrap}
   .tab-btn small{display:none}
-  .phone{width:min(62vw,260px);height:min(56vh,520px)}
-  .research{padding:70px 20px}
+  .phone-stage{flex:none;min-height:590px;padding:20px 0}
+  .phone{width:min(78vw,260px);height:clamp(480px,72svh,540px)}
+  .research{padding:70px 20px;min-height:0;overflow:visible;position:relative;z-index:1}
   .research-stats{gap:22px}
   .tier-cards{grid-template-columns:1fr}
   .join{padding:70px 20px}
@@ -241,6 +242,15 @@ footer small{margin-left:auto;color:#d9c3ac;font-size:9px;font-family:sans-serif
   .join small{display:block;margin-top:18px}
   footer{align-items:flex-start;gap:12px}
   footer small{width:100%;margin:0}
+}
+
+@media(max-width:420px){
+  .demo{padding-left:14px;padding-right:14px}
+  .tab-list{gap:4px}
+  .tab-btn{padding:10px 9px}
+  .phone-stage{min-height:560px}
+  .phone{width:min(86vw,250px);height:500px}
+  .research-stats{flex-wrap:wrap}
 }
 
 @media(prefers-reduced-motion:reduce){
