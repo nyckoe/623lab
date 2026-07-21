@@ -1,110 +1,60 @@
-# CKare website
+# CKare platform
 
-## Instant demo
+CKare is a two-product care-workforce platform:
 
-Open `index.html` directly in any modern browser. It is a standalone interactive demo with no installation or internet connection required, and it can be hosted directly with GitHub Pages.
+- **CKare Pro** for professionals and caregivers: qualifications, training, verified status, availability, eligible work, documentation, claims, and earnings.
+- **CKare Care** for service receivers and authorized representatives: coverage readiness, qualified provider matching, bookings, visits, cost estimates, consent, and support.
 
-The full production React source is in `app/`.
+The repository also retains the original CKare marketing prototype in `app/` and `index.html`.
 
-## Upload to GitHub
+## Ready-to-open web versions
 
-Upload this folder to a GitHub repository. Do not upload `node_modules`, `.npm-cache`, `.vinext`, `.wrangler`, or `dist`; these generated folders are excluded by `.gitignore`.
+Open either file directly in a modern browser or publish the `web/` directory with GitHub Pages:
 
-## Development
+- `web/ckare-pro.html`
+- `web/ckare-care.html`
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Both are self-contained, responsive, keyboard accessible, and contain interactive fictional workflows without external dependencies.
 
-## Prerequisites
+## Mobile apps
 
-- Node.js `>=22.13.0`
+- `apps/ckare-pro` — Expo app, `com.ckare.pro`
+- `apps/ckare-care` — Expo app, `com.ckare.care`
 
-## Quick Start
+Both apps use Expo SDK 57 and import shared policy/design packages from `packages/`.
+Use each app's tracked `.env.example` only as a placeholder template; the owner supplies Supabase values, EAS project IDs, and any notification credentials outside the repository.
+
+## Shared platform
+
+- `packages/core` — provider activation, coverage readiness, emergency routing, and shared domain types.
+- `packages/design` — Quiet Confidence visual tokens.
+- `supabase` — PostgreSQL migration, row-level security baseline, and fictional seed contract.
+- `store-assets` — app-store artwork, listing copy, privacy worksheets, policies, reviewer notes, and checklists.
+
+## Local verification
+
+Requirements: Node.js 22.13 or newer and npm.
 
 ```bash
 npm install
-npm run dev
+npm --prefix apps/ckare-pro install
+npm --prefix apps/ckare-care install
+node scripts/generate-store-assets.mjs
+npm test
 npm run build
+npm run typecheck:pro
+npm run typecheck:care
 ```
 
-This starter does not use `wrangler.jsonc`.
+Start either app:
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run start:pro
+npm run start:care
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Safety and compliance boundaries
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+CKare does not grant professional licenses. Course completion, credential verification, payer enrollment, and marketplace activation are separate states. Insurance verification does not guarantee payment. CKare is not emergency dispatch.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Before production, complete legal, privacy, security, payer, regulated-entity, retention, signing, and store-account work listed in `store-assets/OWNER_INPUTS.md` and `STORE_SUBMISSION_README.md`.
