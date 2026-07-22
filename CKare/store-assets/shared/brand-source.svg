@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-  <title id="title">CKare brand wordmark</title><desc id="desc">Deep evergreen CKare wordmark with a coral care point.</desc>
-  <rect width="1200" height="360" rx="72" fill="#F7F3EA"/>
-  <circle cx="176" cy="180" r="92" fill="#E86F51"/>
-  <path d="M210 121a73 73 0 1 0 0 118" fill="none" stroke="#F7F3EA" stroke-width="34" stroke-linecap="round"/>
-  <circle cx="215" cy="122" r="17" fill="#E8C66A"/>
-  <text x="300" y="230" fill="#17342F" font-family="Georgia,serif" font-size="170" font-weight="700" letter-spacing="-9">Kare</text>
-</svg>
